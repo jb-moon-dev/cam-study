@@ -1,138 +1,604 @@
+
 <!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f0e7">
+
   <title>Study Together — 함께라서 더 꾸준하게</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="css/style.css">
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 </head>
+
 <body>
   <div class="app-shell">
+
     <aside class="sidebar">
-      <a class="brand" href="#" data-view="home"><span class="brand-mark">☕</span><span>Study Together</span></a>
+      <a class="brand" href="#" data-view="home">
+        <span class="brand-mark">☕</span>
+        <span>Study Together</span>
+      </a>
+
       <div class="side-label">STUDY SPACE</div>
+
       <nav class="nav">
-        <button class="nav-item active" data-view="home"><span>⌂</span> 홈</button>
-        <button class="nav-item" data-view="room"><span>▣</span> 스터디룸</button>
-        <button class="nav-item" data-view="timer"><span>◷</span> 집중 타이머</button>
-        <button class="nav-item" data-view="stats"><span>▥</span> 공부 기록</button>
-        <button class="nav-item" data-view="goals"><span>☑</span> 목표 & 체크리스트</button>
+        <button class="nav-item active" data-view="home">
+          <span>⌂</span> 홈
+        </button>
+        <button class="nav-item" data-view="room">
+          <span>▣</span> 스터디룸
+        </button>
+        <button class="nav-item" data-view="timer">
+          <span>◷</span> 집중 타이머
+        </button>
+        <button class="nav-item" data-view="stats">
+          <span>▥</span> 공부 기록
+        </button>
+        <button class="nav-item" data-view="goals">
+          <span>☑</span> 목표 & 체크리스트
+        </button>
       </nav>
+
       <div class="sidebar-bottom">
-        <div class="avatar">☀</div><div><strong>나의 공부 공간</strong><small>천천히, 꾸준하게</small></div>
+        <div class="avatar">☀</div>
+        <div>
+          <strong>나의 공부 공간</strong>
+          <small>천천히, 꾸준하게</small>
+        </div>
       </div>
     </aside>
 
     <main class="main">
-      <header class="topbar">
-        <div><div class="eyebrow" id="today-label">YOUR COZY STUDY SPACE</div><h1 id="page-title">오늘도, 좋은 집중</h1></div>
-        <button class="button button-soft" id="header-create">＋ 스터디룸 만들기</button>
-      </header>
 
-      <section class="view active" id="view-home">
-        <div class="hero">
-          <div class="hero-copy">
-            <span class="pill">A LITTLE PROGRESS EVERY DAY</span>
-            <h2>함께라서<br>더 꾸준하게.</h2>
-            <p>지금, 좋은 사람들과 함께<br>각자의 목표를 향해 공부해요.</p>
-            <div class="hero-actions">
-  <button class="button button-primary" id="hero-create">
-    스터디룸 시작하기 <span>→</span>
-  </button>
-  <button class="button button-outline" id="hero-solo">
-    혼자 캠스터디
-  </button>
-</div>
-          </div>
-          <div class="hero-art" aria-label="따뜻한 카페 책상 일러스트"><div class="sun"></div><div class="window"><span></span></div><div class="plant">♧</div><div class="desk"></div><div class="book">GOOD<br>STUDY<br>GOOD LIFE</div><div class="mug">Better<br>Together</div></div>
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="today-label">YOUR COZY STUDY SPACE</div>
+          <h1 id="page-title">오늘도, 좋은 집중</h1>
         </div>
 
-        <div class="section-heading"><div><span class="eyebrow">YOUR DAILY RHYTHM</span><h2>오늘의 공부</h2></div><span class="date-chip" id="date-chip"></span></div>
+        <button class="button button-soft" id="header-create">
+          ＋ 스터디룸 만들기
+        </button>
+      </header>
+
+      <!-- 홈 -->
+      <section class="view active" id="view-home">
+        <div class="hero">
+
+          <div class="hero-copy">
+            <span class="pill">A LITTLE PROGRESS EVERY DAY</span>
+
+            <h2>함께라서<br>더 꾸준하게.</h2>
+
+            <p>
+              지금, 좋은 사람들과 함께<br>
+              각자의 목표를 향해 공부해요.
+            </p>
+
+            <div class="hero-actions">
+              <button class="button button-primary" id="hero-create">
+                스터디룸 시작하기 <span>→</span>
+              </button>
+
+              <button class="button button-outline" id="hero-solo">
+                혼자 캠스터디
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-label="따뜻한 카페 책상 일러스트">
+            <div class="sun"></div>
+            <div class="window"><span></span></div>
+            <div class="plant">♧</div>
+            <div class="desk"></div>
+
+            <div class="book">
+              GOOD<br>
+              STUDY<br>
+              GOOD LIFE
+            </div>
+
+            <div class="mug">
+              Better<br>
+              Together
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">YOUR DAILY RHYTHM</span>
+            <h2>오늘의 공부</h2>
+          </div>
+          <span class="date-chip" id="date-chip"></span>
+        </div>
+
         <div class="stats-grid">
-          <article class="stat-card"><div class="stat-icon peach">◷</div><span>오늘 공부한 시간</span><strong id="home-study-time">0분</strong><small>작은 시간도 쌓이면 실력이 돼요.</small></article>
-          <article class="stat-card"><div class="stat-icon sage">☑</div><span>완료한 목표</span><strong id="home-goals">0 / 0</strong><small>오늘의 체크리스트</small></article>
-          <article class="stat-card"><div class="stat-icon lavender">✦</div><span>집중 세션</span><strong id="home-sessions">0회</strong><small>한 번의 집중부터 시작해요.</small></article>
+          <article class="stat-card">
+            <div class="stat-icon peach">◷</div>
+            <span>오늘 공부한 시간</span>
+            <strong id="home-study-time">0분</strong>
+            <small>작은 시간도 쌓이면 실력이 돼요.</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon sage">☑</div>
+            <span>완료한 목표</span>
+            <strong id="home-goals">0 / 0</strong>
+            <small>오늘의 체크리스트</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon lavender">✦</div>
+            <span>집중 세션</span>
+            <strong id="home-sessions">0회</strong>
+            <small>한 번의 집중부터 시작해요.</small>
+          </article>
         </div>
 
         <div class="content-grid">
           <article class="panel">
-            <div class="panel-heading"><div><span class="eyebrow">FOCUS MODE</span><h3>지금 집중할 시간</h3></div><span class="mini-icon">◷</span></div>
-            <div class="timer-preview"><div class="timer-ring"><div><strong id="home-timer">25:00</strong><span>집중 시간</span></div></div><div class="timer-details"><strong>나만의 페이스로</strong><p>25분 집중하고 5분 쉬어가요.</p><button class="button button-primary" data-go="timer">타이머 열기 →</button></div></div>
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">FOCUS MODE</span>
+                <h3>지금 집중할 시간</h3>
+              </div>
+              <span class="mini-icon">◷</span>
+            </div>
+
+            <div class="timer-preview">
+              <div class="timer-ring">
+                <div>
+                  <strong id="home-timer">25:00</strong>
+                  <span>집중 시간</span>
+                </div>
+              </div>
+
+              <div class="timer-details">
+                <strong>나만의 페이스로</strong>
+                <p>25분 집중하고 5분 쉬어가요.</p>
+                <button class="button button-primary" data-go="timer">
+                  타이머 열기 →
+                </button>
+              </div>
+            </div>
           </article>
+
           <article class="panel">
-            <div class="panel-heading"><div><span class="eyebrow">TODAY'S PLAN</span><h3>오늘의 목표</h3></div><button class="text-button" data-go="goals">모두 보기 →</button></div>
-            <div id="home-goal-list" class="compact-list"><p class="empty-note">오늘의 목표를 하나 정해볼까요?</p></div>
-            <button class="button button-outline full-button" data-go="goals">＋ 목표 추가하기</button>
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">TODAY'S PLAN</span>
+                <h3>오늘의 목표</h3>
+              </div>
+              <button class="text-button" data-go="goals">
+                모두 보기 →
+              </button>
+            </div>
+
+            <div id="home-goal-list" class="compact-list">
+              <p class="empty-note">오늘의 목표를 하나 정해볼까요?</p>
+            </div>
+
+            <button class="button button-outline full-button" data-go="goals">
+              ＋ 목표 추가하기
+            </button>
           </article>
         </div>
       </section>
 
+      <!-- 스터디룸 -->
       <section class="view" id="view-room">
-        <div class="page-intro"><span class="eyebrow">STUDY WITH FRIENDS</span><h2>함께 공부하는 작은 공간</h2><p>방을 만들고 초대 링크를 친구에게 공유해 보세요. 브라우저에서 카메라와 마이크 권한이 필요해요.</p></div>
+        <div class="page-intro">
+          <span class="eyebrow">STUDY WITH FRIENDS</span>
+          <h2>함께 공부하는 작은 공간</h2>
+          <p>
+            방을 만들고 초대 링크를 친구에게 공유해 보세요.
+            브라우저에서 카메라와 마이크 권한이 필요해요.
+          </p>
+        </div>
+
         <div class="room-layout">
+
           <article class="panel room-panel">
-            <div class="panel-heading"><div><span class="eyebrow">LIVE STUDY ROOM</span><h3 id="room-heading">나의 스터디룸</h3></div><span class="live-dot">준비 중</span></div>
-            <div class="video-grid" id="video-grid">
-              <div class="video-tile local-tile"><video id="local-video" autoplay muted playsinline></video><div class="video-placeholder" id="local-placeholder"><span class="video-avatar">나</span><strong>내 화면</strong><small>카메라를 켜면 여기에 보여요</small></div><span class="video-name">나 (You)</span></div>
-              <div class="video-tile friend-tile" id="friend-placeholder"><div class="friend-empty"><span>☕</span><strong>친구를 기다리는 중</strong><small>초대 링크를 공유해 보세요.</small></div><span class="video-name">Study buddy</span></div>
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">LIVE STUDY ROOM</span>
+                <h3 id="room-heading">나의 스터디룸</h3>
+              </div>
+              <span class="live-dot">준비 중</span>
             </div>
+
+            <!-- 영상 영역: 영상 타일만 포함 -->
+            <div class="video-grid" id="video-grid">
+
+              <div class="video-tile local-tile">
+                <video id="local-video" autoplay muted playsinline></video>
+
+                <div class="video-placeholder" id="local-placeholder">
+                  <span class="video-avatar">나</span>
+                  <strong>내 화면</strong>
+                  <small>카메라를 켜면 여기에 보여요</small>
+                </div>
+
+                <span class="video-name">나 (You)</span>
+              </div>
+
+              <div class="video-tile friend-tile" id="friend-placeholder">
+                <div class="friend-empty">
+                  <span>☕</span>
+                  <strong>친구를 기다리는 중</strong>
+                  <small>초대 링크를 공유해 보세요.</small>
+                </div>
+
+                <span class="video-name">Study buddy</span>
+              </div>
+
+            </div>
+
+            <!-- 오늘의 공부: 영상 그리드 바깥 -->
+            <div class="panel room-study-panel" id="room-study-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">TODAY'S STUDY</span>
+                  <h3>오늘의 목표</h3>
+                </div>
+
+                <button class="text-button" id="room-edit-goal">
+                  목표 수정
+                </button>
+              </div>
+
+              <div class="room-goal-text" id="room-goal-text">
+                오늘도 한 걸음 나아가기
+              </div>
+
+              <div class="room-study-timer">
+                <span class="eyebrow">MY FOCUS TIME</span>
+                <strong id="room-study-clock">00:00:00</strong>
+                <span class="room-study-status" id="room-study-status">
+                  공부를 시작할 준비가 되었어요.
+                </span>
+              </div>
+
+              <div class="room-study-actions">
+                <button class="button button-primary" id="room-study-start">
+                  ▶ 공부 시작
+                </button>
+
+                <button class="button button-outline" id="room-study-finish" disabled>
+                  ■ 공부 종료
+                </button>
+              </div>
+            </div>
+
+            <!-- 혼자 캠스터디 -->
             <div class="solo-mode-action">
-  <button class="button button-primary" id="solo-camera">
-    ☀ 혼자 캠 켜기
-  </button>
-  <small>혼자 캠을 켜면 영상은 내 브라우저에서만 표시돼요.</small>
-</div>
-            <div class="video-controls"><button class="round-control" id="camera-toggle" title="카메라 켜기/끄기">▣</button><button class="round-control" id="mic-toggle" title="마이크 켜기/끄기">♬</button><button class="round-control" id="screen-toggle" title="화면 공유">▤</button><button class="round-control danger" id="leave-room" title="연결 종료">×</button></div>
-            <div class="notice" id="room-status">아직 연결된 스터디룸이 없어요. 방을 만들거나 초대 링크로 입장하세요.</div>
+              <button class="button button-primary" id="solo-camera">
+                ☀ 혼자 캠 켜기
+              </button>
+
+              <small>
+                혼자 캠을 켜면 영상은 내 브라우저에서만 표시돼요.
+              </small>
+            </div>
+
+            <!-- 카메라 및 마이크 제어 -->
+            <div class="video-controls">
+              <button class="round-control" id="camera-toggle" title="카메라 켜기/끄기">
+                ▣
+              </button>
+
+              <button class="round-control" id="mic-toggle" title="마이크 켜기/끄기">
+                ♬
+              </button>
+
+              <button class="round-control" id="screen-toggle" title="화면 공유">
+                ▤
+              </button>
+
+              <button class="round-control danger" id="leave-room" title="연결 종료">
+                ×
+              </button>
+            </div>
+
+            <div class="notice" id="room-status">
+              아직 연결된 스터디룸이 없어요.
+              방을 만들거나 초대 링크로 입장하세요.
+            </div>
           </article>
-          <aside class="room-side">
-            <article class="panel"><span class="eyebrow">MAKE A ROOM</span><h3>스터디룸 만들기</h3><p class="muted">방을 만들면 초대 링크가 생성돼요.</p><label for="room-name">방 이름</label><input id="room-name" class="field" value="우리의 공부방" maxlength="40"><button class="button button-primary full-button" id="create-room">방 만들고 카메라 켜기</button><div class="divider"></div><span class="eyebrow">INVITE A FRIEND</span><label for="invite-link">초대 링크</label><div class="copy-row"><input id="invite-link" class="field" placeholder="방을 만들면 링크가 나타나요" readonly><button class="button button-soft" id="copy-invite">복사</button></div><small class="helper">친구는 링크를 열고 입장 버튼을 누르면 돼요.</small><button class="button button-outline full-button" id="join-room">초대 링크로 입장 / 연결</button></article>
-            <article class="panel safety-note"><span class="note-icon">♡</span><div><strong>작은 약속</strong><p>카메라 화면은 연결된 참가자에게 공유돼요. 신뢰할 수 있는 친구에게만 초대 링크를 보내세요.</p></div></article>
+
+          <!-- 방 생성 및 초대 -->
+          <aside class="room-side" id="room-side">
+
+            <article class="panel">
+              <span class="eyebrow">MAKE A ROOM</span>
+              <h3>스터디룸 만들기</h3>
+              <p class="muted">방을 만들면 초대 링크가 생성돼요.</p>
+
+              <label for="room-name">방 이름</label>
+              <input
+                id="room-name"
+                class="field"
+                value="우리의 공부방"
+                maxlength="40"
+              >
+
+              <button class="button button-primary full-button" id="create-room">
+                방 만들고 카메라 켜기
+              </button>
+
+              <div class="divider"></div>
+
+              <span class="eyebrow">INVITE A FRIEND</span>
+
+              <label for="invite-link">초대 링크</label>
+
+              <div class="copy-row">
+                <input
+                  id="invite-link"
+                  class="field"
+                  placeholder="방을 만들면 링크가 나타나요"
+                  readonly
+                >
+                <button class="button button-soft" id="copy-invite">
+                  복사
+                </button>
+              </div>
+
+              <small class="helper">
+                친구는 링크를 열고 입장 버튼을 누르면 돼요.
+              </small>
+
+              <button class="button button-outline full-button" id="join-room">
+                초대 링크로 입장 / 연결
+              </button>
+            </article>
+
+            <article class="panel safety-note">
+              <span class="note-icon">♡</span>
+              <div>
+                <strong>작은 약속</strong>
+                <p>
+                  카메라 화면은 연결된 참가자에게 공유돼요.
+                  신뢰할 수 있는 친구에게만 초대 링크를 보내세요.
+                </p>
+              </div>
+            </article>
+
           </aside>
         </div>
       </section>
 
+      <!-- 집중 타이머 -->
       <section class="view" id="view-timer">
-        <div class="page-intro"><span class="eyebrow">SLOW DOWN TO FOCUS</span><h2>나만의 집중 리듬</h2><p>짧은 집중을 반복하며 오늘의 시간을 차곡차곡 쌓아봐요.</p></div>
+        <div class="page-intro">
+          <span class="eyebrow">SLOW DOWN TO FOCUS</span>
+          <h2>나만의 집중 리듬</h2>
+          <p>짧은 집중을 반복하며 오늘의 시간을 차곡차곡 쌓아봐요.</p>
+        </div>
+
         <div class="timer-page-grid">
           <article class="panel timer-main">
-            <div class="segmented"><button class="segment active" data-mode="focus">뽀모도로 25분</button><button class="segment" data-mode="short">짧은 휴식 5분</button><button class="segment" data-mode="long">긴 휴식 15분</button></div>
-            <div class="big-timer-ring"><div><strong id="timer-display">25:00</strong><span id="timer-mode-label">FOCUS SESSION</span></div></div>
-            <div class="timer-actions"><button class="button button-primary" id="timer-start">▶ 시작하기</button><button class="button button-outline" id="timer-reset">↻ 초기화</button></div>
-            <p class="timer-tip">“완벽하게 하는 것보다, 다시 돌아오는 게 중요해요.”</p>
+            <div class="segmented">
+              <button class="segment active" data-mode="focus">뽀모도로 25분</button>
+              <button class="segment" data-mode="short">짧은 휴식 5분</button>
+              <button class="segment" data-mode="long">긴 휴식 15분</button>
+            </div>
+
+            <div class="big-timer-ring">
+              <div>
+                <strong id="timer-display">25:00</strong>
+                <span id="timer-mode-label">FOCUS SESSION</span>
+              </div>
+            </div>
+
+            <div class="timer-actions">
+              <button class="button button-primary" id="timer-start">
+                ▶ 시작하기
+              </button>
+              <button class="button button-outline" id="timer-reset">
+                ↻ 초기화
+              </button>
+            </div>
+
+            <p class="timer-tip">
+              “완벽하게 하는 것보다, 다시 돌아오는 게 중요해요.”
+            </p>
           </article>
+
           <article class="panel">
-            <div class="panel-heading"><div><span class="eyebrow">TODAY</span><h3>오늘의 집중 기록</h3></div><span class="mini-icon">✦</span></div>
-            <div class="today-focus"><strong id="timer-today-total">0분</strong><span>누적 공부 시간</span></div>
-            <div class="progress-track"><span id="daily-progress"></span></div><div class="progress-caption"><span>오늘 목표 2시간</span><span id="daily-progress-label">0%</span></div>
-            <div class="divider"></div><h4>최근 세션</h4><div id="recent-sessions" class="compact-list"><p class="empty-note">첫 집중 세션을 시작해 보세요.</p></div>
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">TODAY</span>
+                <h3>오늘의 집중 기록</h3>
+              </div>
+              <span class="mini-icon">✦</span>
+            </div>
+
+            <div class="today-focus">
+              <strong id="timer-today-total">0분</strong>
+              <span>누적 공부 시간</span>
+            </div>
+
+            <div class="progress-track">
+              <span id="daily-progress"></span>
+            </div>
+
+            <div class="progress-caption">
+              <span>오늘 목표 2시간</span>
+              <span id="daily-progress-label">0%</span>
+            </div>
+
+            <div class="divider"></div>
+            <h4>최근 세션</h4>
+
+            <div id="recent-sessions" class="compact-list">
+              <p class="empty-note">첫 집중 세션을 시작해 보세요.</p>
+            </div>
           </article>
         </div>
       </section>
 
+      <!-- 공부 기록 -->
       <section class="view" id="view-stats">
-        <div class="page-intro"><span class="eyebrow">YOUR PROGRESS, YOUR PACE</span><h2>조금씩 쌓이는 기록</h2><p>기록은 이 브라우저에 저장돼요. 같은 기기에서 다시 방문하면 이어서 확인할 수 있어요.</p></div>
-        <div class="stats-grid stats-grid-large"><article class="stat-card"><div class="stat-icon peach">◷</div><span>오늘 공부 시간</span><strong id="stats-today">0분</strong><small>오늘 완료한 집중 세션</small></article><article class="stat-card"><div class="stat-icon sage">▥</div><span>최근 7일</span><strong id="stats-week">0분</strong><small>일주일 동안 공부한 시간</small></article><article class="stat-card"><div class="stat-icon lavender">✦</div><span>누적 세션</span><strong id="stats-count">0회</strong><small>집중 완료 횟수</small></article></div>
-        <article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">LAST 7 DAYS</span><h3>주간 공부 시간</h3></div><span class="chart-unit">분 단위</span></div><div class="bar-chart" id="weekly-chart"></div></article>
-        <article class="panel"><div class="panel-heading"><div><span class="eyebrow">SESSION HISTORY</span><h3>최근 공부 기록</h3></div></div><div id="session-history" class="history-list"><p class="empty-note">아직 기록이 없어요.</p></div></article>
+        <div class="page-intro">
+          <span class="eyebrow">YOUR PROGRESS, YOUR PACE</span>
+          <h2>조금씩 쌓이는 기록</h2>
+          <p>
+            기록은 이 브라우저에 저장돼요.
+            같은 기기에서 다시 방문하면 이어서 확인할 수 있어요.
+          </p>
+        </div>
+
+        <div class="stats-grid stats-grid-large">
+          <article class="stat-card">
+            <div class="stat-icon peach">◷</div>
+            <span>오늘 공부 시간</span>
+            <strong id="stats-today">0분</strong>
+            <small>오늘 완료한 집중 세션</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon sage">▥</div>
+            <span>최근 7일</span>
+            <strong id="stats-week">0분</strong>
+            <small>일주일 동안 공부한 시간</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon lavender">✦</div>
+            <span>누적 세션</span>
+            <strong id="stats-count">0회</strong>
+            <small>집중 완료 횟수</small>
+          </article>
+        </div>
+
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">LAST 7 DAYS</span>
+              <h3>주간 공부 시간</h3>
+            </div>
+            <span class="chart-unit">분 단위</span>
+          </div>
+
+          <div class="bar-chart" id="weekly-chart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">SESSION HISTORY</span>
+              <h3>최근 공부 기록</h3>
+            </div>
+          </div>
+
+          <div id="session-history" class="history-list">
+            <p class="empty-note">아직 기록이 없어요.</p>
+          </div>
+        </article>
       </section>
 
+      <!-- 목표 및 체크리스트 -->
       <section class="view" id="view-goals">
-        <div class="page-intro"><span class="eyebrow">ONE THING AT A TIME</span><h2>오늘의 목표와 체크리스트</h2><p>큰 목표도 작게 나누면 시작하기 쉬워져요.</p></div>
-        <article class="panel goal-banner"><div class="goal-banner-icon">✧</div><div class="goal-banner-copy"><span class="eyebrow">TODAY'S INTENTION</span><h3 id="goal-banner-title">오늘도 한 걸음 나아가기</h3><p>오늘 내가 해내고 싶은 것을 적어보세요.</p></div><button class="button button-outline" id="edit-intention">목표 수정</button></article>
-        <article class="panel"><div class="panel-heading"><div><span class="eyebrow">MY CHECKLIST</span><h3>할 일 목록</h3></div><span class="task-count" id="task-count">0개</span></div><form id="task-form" class="task-form"><input id="task-input" class="field" placeholder="예: 이산수학 3장 복습하기" maxlength="120" required><button class="button button-primary" type="submit">＋ 추가</button></form><div id="task-list" class="task-list"><p class="empty-note">오늘의 첫 번째 할 일을 추가해 보세요.</p></div><div class="goal-footer"><span id="goal-progress-text">아직 완료한 목표가 없어요.</span><button class="text-button" id="clear-completed">완료한 항목 지우기</button></div></article>
+        <div class="page-intro">
+          <span class="eyebrow">ONE THING AT A TIME</span>
+          <h2>오늘의 목표와 체크리스트</h2>
+          <p>큰 목표도 작게 나누면 시작하기 쉬워져요.</p>
+        </div>
+
+        <article class="panel goal-banner">
+          <div class="goal-banner-icon">✧</div>
+
+          <div class="goal-banner-copy">
+            <span class="eyebrow">TODAY'S INTENTION</span>
+            <h3 id="goal-banner-title">오늘도 한 걸음 나아가기</h3>
+            <p>오늘 내가 해내고 싶은 것을 적어보세요.</p>
+          </div>
+
+          <button class="button button-outline" id="edit-intention">
+            목표 수정
+          </button>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">MY CHECKLIST</span>
+              <h3>할 일 목록</h3>
+            </div>
+            <span class="task-count" id="task-count">0개</span>
+          </div>
+
+          <form id="task-form" class="task-form">
+            <input
+              id="task-input"
+              class="field"
+              placeholder="예: 이산수학 3장 복습하기"
+              maxlength="120"
+              required
+            >
+            <button class="button button-primary" type="submit">
+              ＋ 추가
+            </button>
+          </form>
+
+          <div id="task-list" class="task-list">
+            <p class="empty-note">오늘의 첫 번째 할 일을 추가해 보세요.</p>
+          </div>
+
+          <div class="goal-footer">
+            <span id="goal-progress-text">아직 완료한 목표가 없어요.</span>
+            <button class="text-button" id="clear-completed">
+              완료한 항목 지우기
+            </button>
+          </div>
+        </article>
       </section>
 
-      <footer class="footer">Made for slow mornings & focused afternoons <span>☕</span></footer>
+      <footer class="footer">
+        Made for slow mornings & focused afternoons <span>☕</span>
+      </footer>
+
     </main>
   </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <dialog id="intention-dialog" class="modal"><form method="dialog" id="intention-form"><span class="eyebrow">TODAY'S INTENTION</span><h3>오늘의 한 가지 목표</h3><input class="field" id="intention-input" maxlength="100" placeholder="예: 미루던 과제 1시간 진행하기"><div class="modal-actions"><button class="button button-outline" value="cancel">취소</button><button class="button button-primary" id="save-intention" value="save">저장하기</button></div></form></dialog>
+
+  <dialog id="intention-dialog" class="modal">
+    <form method="dialog" id="intention-form">
+      <span class="eyebrow">TODAY'S INTENTION</span>
+      <h3>오늘의 한 가지 목표</h3>
+
+      <input
+        class="field"
+        id="intention-input"
+        maxlength="100"
+        placeholder="예: 미루던 과제 1시간 진행하기"
+      >
+
+      <div class="modal-actions">
+        <button class="button button-outline" value="cancel">
+          취소
+        </button>
+        <button class="button button-primary" id="save-intention" value="save">
+          저장하기
+        </button>
+      </div>
+    </form>
+  </dialog>
+
   <script src="js/app.js"></script>
 </body>
 </html>
