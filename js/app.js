@@ -350,6 +350,7 @@
         $("#intention-input").value.trim() || "오늘도 한 걸음 나아가기";
       save();
       render();
+      $("#room-goal-text").textContent = state.intention || "오늘도 한 걸음 나아가기";
     }
   });
 
@@ -436,7 +437,130 @@
   }
 
   render();
+  
+  // ------------------------------------------------------------
+  // 스터디룸 공부 시간 기록
+  // ------------------------------------------------------------
 
+  let roomStudyRunning = false;
+  let roomStudyStartedAt = 0;
+  let roomStudyElapsed = 0;
+  let roomStudyInterval = null;
+
+  function formatStudyClock(seconds) {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+
+    return [
+      String(h).padStart(2, "0"),
+      String(m).padStart(2, "0"),
+      String(s).padStart(2, "0")
+    ].join(":");
+  }
+
+  function updateRoomStudyClock() {
+    const elapsed = roomStudyElapsed +
+      (roomStudyRunning
+        ? Math.floor((Date.now() - roomStudyStartedAt) / 1000)
+        : 0);
+
+    $("#room-study-clock").textContent = formatStudyClock(elapsed);
+
+    $("#room-study-start").textContent = roomStudyRunning
+      ? "Ⅱ 공부 중"
+      : elapsed > 0 ? "▶ 공부 계속하기" : "▶ 공부 시작";
+
+    $("#room-study-start").disabled = roomStudyRunning;
+    $("#room-study-finish").disabled = !roomStudyRunning;
+    $("#room-study-status").textContent = roomStudyRunning
+      ? "지금 집중하고 있어요. 천천히 이어가 봐요."
+      : elapsed > 0
+        ? "잠시 멈췄어요. 준비되면 다시 시작하세요."
+        : "공부를 시작할 준비가 되었어요.";
+  }
+
+  function startRoomStudy() {
+    if (roomStudyRunning) return;
+
+    roomStudyRunning = true;
+    roomStudyStartedAt = Date.now();
+
+    updateRoomStudyClock();
+
+    roomStudyInterval = setInterval(updateRoomStudyClock, 1000);
+    toast("공부를 시작했어요. 오늘도 화이팅! ☕");
+  }
+
+  function finishRoomStudy() {
+    if (!roomStudyRunning) return;
+
+    roomStudyElapsed += Math.floor(
+      (Date.now() - roomStudyStartedAt) / 1000
+    );
+
+    roomStudyRunning = false;
+    roomStudyStartedAt = 0;
+
+    clearInterval(roomStudyInterval);
+    roomStudyInterval = null;
+
+    const seconds = roomStudyElapsed;
+
+    if (seconds > 0) {
+      state.sessions.unshift({
+        id: Date.now(),
+        date: todayKey(),
+        seconds,
+        endedAt: new Date().toISOString(),
+        mode: "focus"
+      });
+
+      state.activeSeconds = 0;
+      state.activeDate = todayKey();
+      save();
+      render();
+    }
+
+    roomStudyElapsed = 0;
+    updateRoomStudyClock();
+
+    toast("공부 시간을 기록했어요. 캠은 계속 켜져 있어요.");
+  }
+
+  $("#room-study-start").addEventListener("click", startRoomStudy);
+  $("#room-study-finish").addEventListener("click", finishRoomStudy);
+
+  $("#room-edit-goal").addEventListener("click", () => {
+    $("#intention-input").value = state.intention || "";
+    $("#intention-dialog").showModal();
+  });
+
+  function enterStudyRoom() {
+    document.body.classList.add("in-study-room");
+    $("#room-goal-text").textContent =
+      state.intention || "오늘도 한 걸음 나아가기";
+  }
+
+  function exitStudyRoom() {
+    document.body.classList.remove("in-study-room");
+
+    if (roomStudyRunning) {
+      finishRoomStudy();
+    }
+
+    roomStudyElapsed = 0;
+    roomStudyRunning = false;
+    roomStudyStartedAt = 0;
+
+    clearInterval(roomStudyInterval);
+    roomStudyInterval = null;
+
+    updateRoomStudyClock();
+    navigate("home");
+  }
+
+  
   // ------------------------------------------------------------
   // 캠스터디
   // ------------------------------------------------------------
@@ -570,6 +694,7 @@
       }
 
       await getMedia(false);
+      enterStudyRoom();
       soloMode = true;
       setInvite("");
 
@@ -613,6 +738,7 @@
 
     soloMode = false;
     setRoomStatus("친구와 연결됐어요. 함께 집중해 봐요!", true);
+    enterStudyRoom();
   }
 
   function setupPeerEvents(p) {
@@ -672,6 +798,7 @@
       );
 
       toast("스터디룸을 만들었어요. 초대 링크를 공유해 보세요.");
+      enterStudyRoom();
     } catch (e) {
       setRoomStatus(e.message || "스터디룸을 만들지 못했어요.");
       toast(e.message || "카메라 권한을 확인해 주세요.");
@@ -842,6 +969,8 @@
     setRoomStatus("연결을 종료했어요. 혼자 캠을 켜거나 새 방을 만들어 보세요.");
 
     toast("카메라와 스터디룸 연결을 종료했어요.");
+    document.body.classList.remove("in-study-room");
+    navigate("home");
   });
 
   // 초대 링크로 접속한 경우
