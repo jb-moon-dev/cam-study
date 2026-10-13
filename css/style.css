@@ -24,3 +24,78 @@
     flex-direction: column;
   }
 }
+
+
+/* 스터디룸 공부 관리: 기존 패널과 버튼 스타일 재사용 */
+.room-study-panel {
+  margin-top: 16px;
+}
+
+.room-goal-text {
+  padding: 14px 15px;
+  border-radius: 10px;
+  background: #f8f2e9;
+  color: var(--brown-dark);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.room-study-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 10px 16px;
+}
+
+.room-study-timer strong {
+  font-size: clamp(28px, 4vw, 38px);
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.room-study-status {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.room-study-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.room-study-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* 스터디룸 입장 후 방 만들기 영역 숨김 */
+body.in-study-room #room-side {
+  display: none;
+}
+
+body.in-study-room .room-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 1050px) {
+  body.in-study-room .room-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .room-study-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .room-study-actions .button {
+    white-space: normal;
+    padding: 11px 8px;
+    font-size: 11px;
+  }
+}
