@@ -40,7 +40,14 @@
             <span class="pill">A LITTLE PROGRESS EVERY DAY</span>
             <h2>함께라서<br>더 꾸준하게.</h2>
             <p>지금, 좋은 사람들과 함께<br>각자의 목표를 향해 공부해요.</p>
-            <div class="hero-actions"><button class="button button-primary" id="hero-create">스터디룸 시작하기 <span>→</span></button><button class="button button-outline" data-go="timer">혼자 집중하기</button></div>
+            <div class="hero-actions">
+  <button class="button button-primary" id="hero-create">
+    스터디룸 시작하기 <span>→</span>
+  </button>
+  <button class="button button-outline" id="hero-solo">
+    혼자 캠스터디
+  </button>
+</div>
           </div>
           <div class="hero-art" aria-label="따뜻한 카페 책상 일러스트"><div class="sun"></div><div class="window"><span></span></div><div class="plant">♧</div><div class="desk"></div><div class="book">GOOD<br>STUDY<br>GOOD LIFE</div><div class="mug">Better<br>Together</div></div>
         </div>
@@ -74,6 +81,12 @@
               <div class="video-tile local-tile"><video id="local-video" autoplay muted playsinline></video><div class="video-placeholder" id="local-placeholder"><span class="video-avatar">나</span><strong>내 화면</strong><small>카메라를 켜면 여기에 보여요</small></div><span class="video-name">나 (You)</span></div>
               <div class="video-tile friend-tile" id="friend-placeholder"><div class="friend-empty"><span>☕</span><strong>친구를 기다리는 중</strong><small>초대 링크를 공유해 보세요.</small></div><span class="video-name">Study buddy</span></div>
             </div>
+            <div class="solo-mode-action">
+  <button class="button button-primary" id="solo-camera">
+    ☀ 혼자 캠 켜기
+  </button>
+  <small>혼자 캠을 켜면 영상은 내 브라우저에서만 표시돼요.</small>
+</div>
             <div class="video-controls"><button class="round-control" id="camera-toggle" title="카메라 켜기/끄기">▣</button><button class="round-control" id="mic-toggle" title="마이크 켜기/끄기">♬</button><button class="round-control" id="screen-toggle" title="화면 공유">▤</button><button class="round-control danger" id="leave-room" title="연결 종료">×</button></div>
             <div class="notice" id="room-status">아직 연결된 스터디룸이 없어요. 방을 만들거나 초대 링크로 입장하세요.</div>
           </article>
